@@ -1,0 +1,26 @@
+h2 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+h2:before,
+h2:after {
+  content: '';
+  border-top: 2px solid;
+  margin: 0 20px 0 0;
+  flex: 1 0 20px;
+}
+
+h2:after {
+  margin: 0 0 0 20px;
+}
+
+.country-home__link {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 7px;
+}

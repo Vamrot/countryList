@@ -1,0 +1,47 @@
+<div class="" *ngIf="!showSpinner">
+  <div *ngIf="country && !showSpinner" class="country-detail-container">
+    <div class="">
+      <h3 class="country-list-title">
+        {{country.name}}
+      </h3>
+    </div>
+    <div class="country-detail-img">
+      <img class="country-detail-img" src="{{country.flag}}" (error)="country.flag = 'assets/img/notFound.png'" alt="country_flag">
+    </div>
+    <div class="">
+      <ul class="country-detail-list__text">
+        <li>
+          <span class="country-detail-list__text--bold">Capital:</span> {{country.capital}}
+        </li>
+        <li class="">
+          <span class="country-detail-list__text--bold">Region:</span> {{country.subregion}}, {{country.region}}
+        </li>
+        <li class="">
+          <span class="country-detail-list__text--bold">Population:</span> {{country.population | number}}
+        </li>
+        <li class="">
+          <span class="country-detail-list__text--bold">Currencies:</span>
+          <ul>
+            <li *ngFor="let currency of country.currencies">
+              {{currency.name}}: {{currency.symbol}}
+            </li>
+          </ul>
+        </li>
+        <li class="">
+          <span class="country-detail-list__text--bold">Timezones:</span>
+          <ul class="country-list-list">
+            <li class="country-list-list__element" *ngFor="let timezone of country.timezones">
+              {{timezone}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="country-list-error" *ngIf="!country">
+    There was an error try again later.
+  </div>
+</div>
+<div class="country-list-error" *ngIf="showSpinner && !country">
+  Loading ...
+</div>

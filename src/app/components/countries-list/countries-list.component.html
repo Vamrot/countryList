@@ -1,0 +1,30 @@
+<div class="country-list-container">
+  <h3 class="country-list-title">
+    Country List
+  </h3>
+
+  <input (keyup)="filterCountries($event.target.value)" name="searchBox" type="text" class="country-searchBox"
+    [disabled]="showSpinner" placeholder="Enter the country you are looking for">
+
+  <div *ngIf="!showSpinner">
+    <ul class="country-list-list">
+      <li class="country-list-list__element" *ngFor="let country of showedContries">
+        <a class="country-list-list__element__link" [routerLink]="['/detail/' + country.alpha]"
+          routerLinkActive="'/detail/' + country.alpha">
+          {{country.name}}
+        </a>
+      </li>
+    </ul>
+
+    <div class="country-list-error" *ngIf="showedContries && !showedContries.length">
+      We have not found countries with that search.
+    </div>
+
+    <div class="country-list-error" *ngIf="!showedContries">
+      There was an error try again later.
+    </div>
+  </div>
+  <div class="country-list-error" *ngIf="showSpinner">
+    Loading ...
+  </div>
+</div>
